@@ -53,6 +53,30 @@ img{
     max-width: 100%;
 }
 
+:focus {
+    outline: 3px solid var(--clr-accent);
+    outline-offset: 3px;
+}
+
+.btn{
+    display: inline-block;
+    padding: .5em 1.5em;
+    background: var(--clr-accent);
+    color: var(--clr-dark);
+    text-decoration: none;
+    cursor: pointer;
+    font-size: .8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: var(--fw-bold);
+    transition: transform 200ms ease-in-out;
+    margin-top: 4 em;
+}
+
+.btn:hover{
+    transform: scale(1.1);
+}
+
 h1, h2, h3{
     line-height: 1.1;
     margin: 0;
@@ -85,11 +109,26 @@ h3{font-size: var(--fs-h3);}
     display: inline-block;
 }
 
-/*Header*/
-nav{
-    display: none;
+.section_subtitle {
+    margin: 0;
+    font-size: var(--fs-h3);
 }
 
+.section_subtitle_son{
+    background: var(--clr-accent);
+    padding: .25em 1em;
+    font-family: var(--ff-secondary);
+    margin-bottom: 1em;
+}
+
+.section_title_son, section_subtitle_son{
+    grid-column: 1;
+}
+
+/*Header*/
+.nav{
+    display: none;
+}
 /*Intro*/
 .intro{
     position: relative;
@@ -128,27 +167,89 @@ nav{
     }
 }
 
-.education{
+
+.PortfolioCard{
     /*Blend background image with accent color, change text to light color*/
     background-color: var(--clr-dark);
-    background-image:url(../img/education.jpg);
-    background-size: cover;
+    background-image:url(../img/heart.png);
+    background-size:auto;
     background-blend-mode: multiply;
     color: var(--clr-light);
     text-align: center;
+    
 }
 
-#education_title{
+#Portfolio_title{
     color: var(--clr-accent);
     position: relative;
 }
 
 /*Psuedo element that lets us draw a white line under the title*/
-#education_title::after{
+#Portfolio_title::after{
     content:''; /*won't appear unless it has some content defined*/
     display: block;
     width: 25%;
     height: 1px;
     margin: 0.5em auto 1em;
     background: var(--clr-light);
+    opacity: 0.25;
+}
+
+
+/*Jared's Section*/
+.Son{
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.Son_image{
+    box-shadow: var(--bs);
+}
+
+@media (min-width: 600px) {
+    .Son {
+        display: grid;
+        grid-template-columns: 1fr 200px;
+        grid-template-areas: 
+            "title img"
+            "subtitle img"
+            "text img";
+        grid-column-gap: 2em;
+    }
+    .Son_image {
+        grid-area: img;
+        position: relative;
+        z-index: 2;
+    }
+    
+    .section_title_son {
+        grid-area: title;
+    }
+    
+    .section_subtitle_son {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        position: relative;
+        left: -1em;
+        width: calc(100% + 2em);
+        padding-left: 1em;
+        padding-right: calc(200px + 4em);
+    }
+    
+}
+
+/*Footer*/
+
+.footer {
+    background:#111 ;
+    color: var(--clr-accent);
+    text-align: center;
+    padding: 2.5em 0;
+      font-size: var(--fs-h3);
+
+}
+
+.footer a { 
+    color: inherit;
+    text-decoration: none;
 }
